@@ -4,6 +4,8 @@ https://github.com/Robpol86/Flask-Statics-Helper
 https://pypi.python.org/pypi/Flask-Statics-Helper
 """
 
+from collections import OrderedDict
+
 from flask import Blueprint
 
 import resource_base
@@ -36,7 +38,7 @@ class Statics(object):
 
     def __init__(self, app=None):
         self.all_variables = list()
-        self.all_resources = dict()
+        self.all_resources = OrderedDict()
         self.blueprint = None
         if app is not None:
             self.init_app(app)

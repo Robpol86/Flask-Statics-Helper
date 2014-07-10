@@ -33,11 +33,11 @@
             {%- endif -%}
 
             {%- for resource in resource_kind %}
-                {%- if kind == 'css' -%}
+                {% if kind == 'css' -%}
                     <link rel="stylesheet" href="/static/flask_statics_helper/{{ resource }}">
                 {%- else -%}
                     <script src="/static/flask_statics_helper/{{ resource }}"></script>
-                {%- endif -%}
+                {%- endif %}
             {% endfor -%}
 
         {%- endif -%}
