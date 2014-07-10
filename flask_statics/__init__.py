@@ -4,10 +4,7 @@ https://github.com/Robpol86/Flask-Statics-Helper
 https://pypi.python.org/pypi/Flask-Statics-Helper
 """
 
-from urlparse import urljoin
-
 from flask import Blueprint
-from jinja2 import Environment, FileSystemLoader
 
 import resource_base
 import resource_definitions
@@ -54,7 +51,7 @@ class Statics(object):
         for resource in resource_base.ResourceBase.__subclasses__():
             self.all_variables.append(resource.TEMPLATE_FLAG)
             obj = resource(app)
-            self.all_resources[resource.TEMPLATE_FLAG] = dict(css=obj.resources_css, js=obj.resources_js)
+            self.all_resources[resource.TEMPLATE_FLAG] = dict(css=tuple(obj.resources_css), js=tuple(obj.resources_js))
 
         # Add this instance to app.extensions.
         if not hasattr(app, 'extensions'):
@@ -62,13 +59,10 @@ class Statics(object):
         app.extensions['statics'] = _StaticsState(self, app)
 
         # Initialize blueprint.
-        name = 'flask_statics'
+        name = 'flask_statics_helper'
+        static_url_path = '{}/{}'.format(app.static_url_path, name)
         self.blueprint = Blueprint(name, __name__, template_folder='templates', static_folder='static',
-                static_url_path=urljoin(app.static_url_path, name))
+                static_url_path=static_url_path)
+        self.blueprint.add_app_template_global(tuple(self.all_variables), 'flask_statics_helper_all_variables')
+        self.blueprint.add_app_template_global(self.all_resources, 'flask_statics_helper_all_resources')
         app.register_blueprint(self.blueprint)
-
-        # Expose data to this extension's templates folder.
-        env = Environment(loader=FileSystemLoader(self.blueprint.template_folder))
-        env.globals.update(
-            dict(flask_statics_all_variables=self.all_variables, flask_statics_all_resources=self.all_resources)
-        )
