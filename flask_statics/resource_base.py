@@ -18,6 +18,7 @@ class ResourceBase(object):
     resources_js -- list of js files.
     """
     DIR = ''
+    STATIC_DIR = os.path.join(__file__, 'static', 'flask_statics_helper')
     TEMPLATE_FLAG = 'STATICS_ENABLE_RESOURCE_{}'
 
     def __init__(self, app):
@@ -34,7 +35,7 @@ class ResourceBase(object):
         prefix -- file name without the file extension.
         suffix -- file extension (if self.minify = True, includes .min before the extension).
         """
-        real_path = os.path.join(__file__, 'static', self.DIR, subdir, prefix + suffix)
+        real_path = os.path.join(self.STATIC_DIR, self.DIR, subdir, prefix + suffix)
         return os.path.exists(real_path)
 
     def add_css(self, subdir, file_name_prefix):
@@ -54,7 +55,7 @@ class ResourceBase(object):
         elif self.file_exists(subdir, file_name_prefix, suffix_maxify):
             self.resources_js.append(os.path.join(self.DIR, subdir, file_name_prefix + suffix_maxify))
         else:
-            file_path = os.path.join(__file__, 'static', self.DIR, subdir, file_name_prefix + suffix_maxify)
+            file_path = os.path.join(self.STATIC_DIR, self.DIR, subdir, file_name_prefix + suffix_maxify)
             raise IOError('Resource file not found: {}'.format(file_path))
 
     def add_js(self, subdir, file_name_prefix):
@@ -66,5 +67,5 @@ class ResourceBase(object):
         elif self.file_exists(subdir, file_name_prefix, suffix_maxify):
             self.resources_js.append(os.path.join(self.DIR, subdir, file_name_prefix + suffix_maxify))
         else:
-            file_path = os.path.join(__file__, 'static', self.DIR, subdir, file_name_prefix + suffix_maxify)
+            file_path = os.path.join(self.STATIC_DIR, self.DIR, subdir, file_name_prefix + suffix_maxify)
             raise IOError('Resource file not found: {}'.format(file_path))

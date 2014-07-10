@@ -15,7 +15,7 @@
         {% for variable in g.flask_statics_helper_variables %}
             {% if session.get(variable) or config.get(variable) %}
                 {% for resource in g.flask_statics_helper_resources.get(variable) %}
-                    <link rel="stylesheet" href="{{ resource.css }} }}">
+                    <link rel="stylesheet" href="/static/flask_statics_helper/{{ resource.css }} }}">
                 {% endfor %}
             {% endif %}
         {% endfor %}
@@ -32,7 +32,7 @@
         {% for variable in g.flask_statics_helper_variables %}
             {% if session.get(variable) or config.get(variable) %}
                 {% for resource in g.flask_statics_helper_resources.get(variable) %}
-                    <script src="{{ resource.js }}"></script>
+                    <script src="/static/flask_statics_helper/{{ resource.js }}"></script>
                 {% endfor %}
             {% endif %}
         {% endfor %}
