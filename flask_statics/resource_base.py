@@ -18,7 +18,7 @@ class ResourceBase(object):
     resources_js -- list of js files.
     """
     DIR = ''
-    STATIC_DIR = os.path.join(__file__, 'static', 'flask_statics_helper')
+    STATIC_DIR = os.path.join(os.path.dirname(__file__), 'static', 'flask_statics_helper')
     TEMPLATE_FLAG = 'STATICS_ENABLE_RESOURCE_{}'
 
     def __init__(self, app):
