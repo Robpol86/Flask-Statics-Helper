@@ -3,6 +3,15 @@
 from resource_base import ResourceBase
 
 
+class ResourceJQuery(ResourceBase):
+    DIR = 'jquery-2.1.1'
+    RESOURCE_NAME = 'JQUERY'
+
+    def __init__(self, app):
+        super(ResourceJQuery, self).__init__(app)
+        self.add_js('', 'jquery-2.1.1')
+
+
 class ResourceAngular(ResourceBase):
     DIR = 'angular-1.3.0-beta.14'
     RESOURCE_NAME = 'ANGULARJS'
@@ -85,15 +94,6 @@ class ResourceFontAwesome(ResourceBase):
     def __init__(self, app):
         super(ResourceFontAwesome, self).__init__(app)
         self.add_css('css', 'font-awesome')
-
-
-class ResourceJQuery(ResourceBase):
-    DIR = 'jquery-2.1.1'
-    RESOURCE_NAME = 'JQUERY'
-
-    def __init__(self, app):
-        super(ResourceJQuery, self).__init__(app)
-        self.add_js('', 'jquery-2.1.1')
 
 
 class ResourceWHHGFont(ResourceBase):

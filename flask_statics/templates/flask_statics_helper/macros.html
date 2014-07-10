@@ -1,0 +1,48 @@
+{% macro flask_statics_helper_render_resources(kind) %}{% with load_list = [] -%}
+    {%- set _ = load_list.append('ANGULARJS') if STATICS_ENABLE_RESOURCE_ANGULARJS -%}
+    {%- set _ = load_list.append('BOOTSTRAP') if STATICS_ENABLE_RESOURCE_BOOTSTRAP -%}
+    {%- set _ = load_list.append('BOOTSTRAP_EDITABLE') if STATICS_ENABLE_RESOURCE_BOOTSTRAP_EDITABLE -%}
+    {%- set _ = load_list.append('BOOTSTRAP_GROWL') if STATICS_ENABLE_RESOURCE_BOOTSTRAP_GROWL -%}
+    {%- set _ = load_list.append('BOOTSTRAP_TYPEAHEAD') if STATICS_ENABLE_RESOURCE_BOOTSTRAP_TYPEAHEAD -%}
+    {%- set _ = load_list.append('CSSHAKE') if STATICS_ENABLE_RESOURCE_CSSHAKE -%}
+    {%- set _ = load_list.append('D3') if STATICS_ENABLE_RESOURCE_D3 -%}
+    {%- set _ = load_list.append('DATATABLES') if STATICS_ENABLE_RESOURCE_DATATABLES -%}
+    {%- set _ = load_list.append('FONT_AWESOME') if STATICS_ENABLE_RESOURCE_FONT_AWESOME -%}
+    {%- set _ = load_list.append('JQUERY') if STATICS_ENABLE_RESOURCE_JQUERY -%}
+    {%- set _ = load_list.append('WHHG_FONT') if STATICS_ENABLE_RESOURCE_WHHG_FONT -%}
+
+    {%- set _ = load_list.append('ANGULARJS_ANIMATE') if STATICS_ENABLE_RESOURCE_ANGULARJS_ANIMATE -%}
+    {%- set _ = load_list.append('ANGULARJS_COOKIES') if STATICS_ENABLE_RESOURCE_ANGULARJS_COOKIES -%}
+    {%- set _ = load_list.append('ANGULARJS_CSP') if STATICS_ENABLE_RESOURCE_ANGULARJS_CSP -%}
+    {%- set _ = load_list.append('ANGULARJS_LOADER') if STATICS_ENABLE_RESOURCE_ANGULARJS_LOADER -%}
+    {%- set _ = load_list.append('ANGULARJS_MESSAGES') if STATICS_ENABLE_RESOURCE_ANGULARJS_MESSAGES -%}
+    {%- set _ = load_list.append('ANGULARJS_MOCKS') if STATICS_ENABLE_RESOURCE_ANGULARJS_MOCKS -%}
+    {%- set _ = load_list.append('ANGULARJS_RESOURCE') if STATICS_ENABLE_RESOURCE_ANGULARJS_RESOURCE -%}
+    {%- set _ = load_list.append('ANGULARJS_ROUTE') if STATICS_ENABLE_RESOURCE_ANGULARJS_ROUTE -%}
+    {%- set _ = load_list.append('ANGULARJS_SANITIZE') if STATICS_ENABLE_RESOURCE_ANGULARJS_SANITIZE -%}
+    {%- set _ = load_list.append('ANGULARJS_SCENARIO') if STATICS_ENABLE_RESOURCE_ANGULARJS_SCENARIO -%}
+    {%- set _ = load_list.append('ANGULARJS_TOUCH') if STATICS_ENABLE_RESOURCE_ANGULARJS_TOUCH -%}
+
+    {%- for suffix in _flask_statics_helper_all_resources -%}
+        {%- if suffix in load_list or config.get('STATICS_ENABLE_RESOURCE_' + suffix) -%}
+
+            {%- if kind == 'css' -%}
+                {%- set resource_kind = _flask_statics_helper_all_resources.get(suffix).css -%}
+            {%- else -%}
+                {%- set resource_kind = _flask_statics_helper_all_resources.get(suffix).js -%}
+            {%- endif -%}
+
+            {%- for resource in resource_kind %}
+                {%- if kind == 'css' -%}
+                    <link rel="stylesheet" href="/static/flask_statics_helper/{{ resource }}">
+                {%- else -%}
+                    <script src="/static/flask_statics_helper/{{ resource }}"></script>
+                {%- endif -%}
+            {% endfor -%}
+
+        {%- endif -%}
+    {%- endfor -%}
+{%- endwith %}{% endmacro -%}
+
+{%- block html_html %}
+{% endblock %}

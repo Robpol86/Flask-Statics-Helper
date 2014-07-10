@@ -8,6 +8,7 @@ from flask import Blueprint
 
 import resource_base
 import resource_definitions
+import resource_definitions_angular
 
 __author__ = '@Robpol86'
 __license__ = 'MIT'
@@ -46,7 +47,8 @@ class Statics(object):
         app.config.setdefault('STATICS_MINIFY', False)
 
         # Populate resources
-        for resource in resource_base.ResourceBase.__subclasses__():
+        subclasses = resource_base.ResourceBase.__subclasses__() + resource_definitions.ResourceAngular.__subclasses__()
+        for resource in subclasses:
             self.all_variables.append(resource.RESOURCE_NAME)
             obj = resource(app)
             self.all_resources[resource.RESOURCE_NAME] = dict(css=tuple(obj.resources_css), js=tuple(obj.resources_js))
