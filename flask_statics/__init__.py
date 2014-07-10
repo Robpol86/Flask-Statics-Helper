@@ -53,6 +53,16 @@ class Statics(object):
             app.extensions = dict()
         app.extensions['statics'] = _StaticsState(self, app)
 
+        # Populate resources
+        all_variables = list()
+        all_resources = dict()
+        for resource in resource_base.ResourceBase.__subclasses__():
+            all_variables.append(resource.TEMPLATE_FLAG)
+            obj = resource(app)
+            all_resources[resource.TEMPLATE_FLAG] = dict(css=obj.resources_css, js=obj.resources_js)
+        setattr(app.g, 'flask_statics_helper_variables', all_variables)
+        setattr(app.g, 'flask_statics_helper_resources', all_resources)
+
         # Initialize blueprint.
         name = app.config['STATICS_PSEUDO_URL_PREFIX']
         bp = Blueprint(name, __name__, template_folder='templates', static_folder='static',

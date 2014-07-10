@@ -12,36 +12,13 @@
     <title>{% block title %}{% endblock title %}</title>
 
     {% block styles %}
-        {% if STATICS_ENABLE_RESOURCE_BOOTSTRAP or config.STATICS_ENABLE_RESOURCE_BOOTSTRAP %}
-            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        {% endif %}
-
-        {% if STATICS_ENABLE_RESOURCE_BOOTSTRAP_EDITABLE or config.STATICS_ENABLE_RESOURCE_BOOTSTRAP_EDITABLE %}
-        {% endif %}
-
-        {% if STATICS_ENABLE_RESOURCE_BOOTSTRAP_GROWL or config.STATICS_ENABLE_RESOURCE_BOOTSTRAP_GROWL %}
-        {% endif %}
-
-        {% if STATICS_ENABLE_RESOURCE_BOOTSTRAP_TYPEAHEAD or config.STATICS_ENABLE_RESOURCE_BOOTSTRAP_TYPEAHEAD %}
-        {% endif %}
-
-        {% if STATICS_ENABLE_RESOURCE_CSSHAKE or config.STATICS_ENABLE_RESOURCE_CSSHAKE %}
-        {% endif %}
-
-        {% if STATICS_ENABLE_RESOURCE_D3 or config.STATICS_ENABLE_RESOURCE_D3 %}
-        {% endif %}
-
-        {% if STATICS_ENABLE_RESOURCE_DATATABLES or config.STATICS_ENABLE_RESOURCE_DATATABLES %}
-        {% endif %}
-
-        {% if STATICS_ENABLE_RESOURCE_FONT_AWESOME or config.STATICS_ENABLE_RESOURCE_FONT_AWESOME %}
-        {% endif %}
-
-        {% if STATICS_ENABLE_RESOURCE_JQUERY or config.STATICS_ENABLE_RESOURCE_JQUERY %}
-        {% endif %}
-
-        {% if STATICS_ENABLE_RESOURCE_WHHG_FONT or config.STATICS_ENABLE_RESOURCE_WHHG_FONT %}
-        {% endif %}
+        {% for variable in g.flask_statics_helper_variables %}
+            {% if session.get(variable) or config.get(variable) %}
+                {% for resource in g.flask_statics_helper_resources.get(variable) %}
+                    <link rel="stylesheet" href="{{ resource.css }} }}">
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
     {% endblock styles %}
 
     {% endblock html_head %}
@@ -52,38 +29,13 @@
     {% endblock html_body %}
 
     {% block scripts %}
-        {% if STATICS_ENABLE_RESOURCE_ANGULARJS or config.STATICS_ENABLE_RESOURCE_ANGULARJS %}
-        {% endif %}
-
-        {% if STATICS_ENABLE_RESOURCE_BOOTSTRAP or config.STATICS_ENABLE_RESOURCE_BOOTSTRAP %}
-        {% endif %}
-
-        {% if STATICS_ENABLE_RESOURCE_BOOTSTRAP_EDITABLE or config.STATICS_ENABLE_RESOURCE_BOOTSTRAP_EDITABLE %}
-        {% endif %}
-
-        {% if STATICS_ENABLE_RESOURCE_BOOTSTRAP_GROWL or config.STATICS_ENABLE_RESOURCE_BOOTSTRAP_GROWL %}
-        {% endif %}
-
-        {% if STATICS_ENABLE_RESOURCE_BOOTSTRAP_TYPEAHEAD or config.STATICS_ENABLE_RESOURCE_BOOTSTRAP_TYPEAHEAD %}
-        {% endif %}
-
-        {% if STATICS_ENABLE_RESOURCE_CSSHAKE or config.STATICS_ENABLE_RESOURCE_CSSHAKE %}
-        {% endif %}
-
-        {% if STATICS_ENABLE_RESOURCE_D3 or config.STATICS_ENABLE_RESOURCE_D3 %}
-        {% endif %}
-
-        {% if STATICS_ENABLE_RESOURCE_DATATABLES or config.STATICS_ENABLE_RESOURCE_DATATABLES %}
-        {% endif %}
-
-        {% if STATICS_ENABLE_RESOURCE_FONT_AWESOME or config.STATICS_ENABLE_RESOURCE_FONT_AWESOME %}
-        {% endif %}
-
-        {% if STATICS_ENABLE_RESOURCE_JQUERY or config.STATICS_ENABLE_RESOURCE_JQUERY %}
-        {% endif %}
-
-        {% if STATICS_ENABLE_RESOURCE_WHHG_FONT or config.STATICS_ENABLE_RESOURCE_WHHG_FONT %}
-        {% endif %}
+        {% for variable in g.flask_statics_helper_variables %}
+            {% if session.get(variable) or config.get(variable) %}
+                {% for resource in g.flask_statics_helper_resources.get(variable) %}
+                    <script src="{{ resource.js }}"></script>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
     {% endblock scripts %}
 </body>
 </html>
