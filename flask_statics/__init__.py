@@ -7,6 +7,7 @@ https://pypi.python.org/pypi/Flask-Statics-Helper
 from urlparse import urljoin
 
 from flask import Blueprint
+from jinja2 import Environment, FileSystemLoader
 
 import resource_base
 import resource_definitions
@@ -29,7 +30,6 @@ class Statics(object):
 
     Relevant configuration settings from the Flask app config:
     STATICS_MINIFY -- set to True to have minified resources selected instead of uncompressed resources.
-    STATICS_PSEUDO_URL_PREFIX -- in case of conflicts for some reason, override the default URL prefix used internally.
 
     Optional settings to enable specific static resources on all templates by default instead of on-demand:
     STATICS_ENABLE_RESOURCE_<resource name> -- refer to resource_definitions.py for list of options. Set to True to
@@ -37,6 +37,9 @@ class Statics(object):
     """
 
     def __init__(self, app=None):
+        self.all_variables = list()
+        self.all_resources = dict()
+        self.blueprint = None
         if app is not None:
             self.init_app(app)
 
@@ -44,27 +47,28 @@ class Statics(object):
         """Initialize the extension."""
         # Set default Flask config options.
         app.config.setdefault('STATICS_MINIFY', False)
-        app.config.setdefault('STATICS_PSEUDO_URL_PREFIX', '_flask_statics_')
         for resource in resource_base.ResourceBase.__subclasses__():
             app.config.setdefault(resource.TEMPLATE_FLAG, False)
+
+        # Populate resources
+        for resource in resource_base.ResourceBase.__subclasses__():
+            self.all_variables.append(resource.TEMPLATE_FLAG)
+            obj = resource(app)
+            self.all_resources[resource.TEMPLATE_FLAG] = dict(css=obj.resources_css, js=obj.resources_js)
 
         # Add this instance to app.extensions.
         if not hasattr(app, 'extensions'):
             app.extensions = dict()
         app.extensions['statics'] = _StaticsState(self, app)
 
-        # Populate resources
-        all_variables = list()
-        all_resources = dict()
-        for resource in resource_base.ResourceBase.__subclasses__():
-            all_variables.append(resource.TEMPLATE_FLAG)
-            obj = resource(app)
-            all_resources[resource.TEMPLATE_FLAG] = dict(css=obj.resources_css, js=obj.resources_js)
-        setattr(app.g, 'flask_statics_helper_variables', all_variables)
-        setattr(app.g, 'flask_statics_helper_resources', all_resources)
-
         # Initialize blueprint.
-        name = app.config['STATICS_PSEUDO_URL_PREFIX']
-        bp = Blueprint(name, __name__, template_folder='templates', static_folder='static',
-                       static_url_path=urljoin(app.static_url_path, name))
-        app.register_blueprint(bp)
+        name = 'flask_statics'
+        self.blueprint = Blueprint(name, __name__, template_folder='templates', static_folder='static',
+                static_url_path=urljoin(app.static_url_path, name))
+        app.register_blueprint(self.blueprint)
+
+        # Expose data to this extension's templates folder.
+        env = Environment(loader=FileSystemLoader(self.blueprint.template_folder))
+        env.globals.update(
+            dict(flask_statics_all_variables=self.all_variables, flask_statics_all_resources=self.all_resources)
+        )

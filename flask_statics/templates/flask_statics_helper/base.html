@@ -12,10 +12,12 @@
     <title>{% block title %}{% endblock title %}</title>
 
     {% block styles %}
-        {% for variable in g.flask_statics_helper_variables %}
+        {% for variable in flask_statics_all_variables %}
             {% if session.get(variable) or config.get(variable) %}
-                {% for resource in g.flask_statics_helper_resources.get(variable) %}
-                    <link rel="stylesheet" href="/static/flask_statics_helper/{{ resource.css }} }}">
+                {% for resource in flask_statics_all_resources.get(variable) %}
+                    {% if resource.css %}
+                        <link rel="stylesheet" href="/static/flask_statics_helper/{{ resource.css }} }}">
+                    {% endif %}
                 {% endfor %}
             {% endif %}
         {% endfor %}
@@ -29,10 +31,12 @@
     {% endblock html_body %}
 
     {% block scripts %}
-        {% for variable in g.flask_statics_helper_variables %}
+        {% for variable in flask_statics_all_variables %}
             {% if session.get(variable) or config.get(variable) %}
-                {% for resource in g.flask_statics_helper_resources.get(variable) %}
-                    <script src="/static/flask_statics_helper/{{ resource.js }}"></script>
+                {% for resource in flask_statics_all_resources.get(variable) %}
+                    {% if resource.js %}
+                        <script src="/static/flask_statics_helper/{{ resource.js }}"></script>
+                    {% endif %}
                 {% endfor %}
             {% endif %}
         {% endfor %}
