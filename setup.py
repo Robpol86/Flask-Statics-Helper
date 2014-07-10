@@ -60,7 +60,7 @@ setuptools.setup(
     # What does your project relate to?
     keywords='flask',
 
-    py_modules=['flask_statics'],
+    packages=['flask_statics'],
     zip_safe=False,
 
     # List run-time dependencies here.  These will be installed by pip when your
