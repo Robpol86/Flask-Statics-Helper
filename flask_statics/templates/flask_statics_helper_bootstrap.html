@@ -1,0 +1,14 @@
+{% extends 'flask_statics_helper_base.html' %}
+{% set STATICS_ENABLE_RESOURCE_BOOTSTRAP = True %}
+
+{% block html_body %}
+    {% block navbar %}
+    {% endblock navbar %}
+
+    {% block content %}
+    <div class="container">
+        {% block container %}
+        {% endblock container %}
+    </div>
+    {% endblock content %}
+{% endblock html_body %}
