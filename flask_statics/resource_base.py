@@ -8,7 +8,7 @@ class ResourceBase(object):
 
     Class variables:
     DIR -- directory name under the static folder where files for this static resource reside.
-    TEMPLATE_FLAG -- variable to set to True inside a template that wishes to use this resource (subclassing this
+    RESOURCE_NAME -- variable to set to True inside a template that wishes to use this resource (subclassing this
         class).
 
     Instance variables:
@@ -19,7 +19,7 @@ class ResourceBase(object):
     """
     DIR = ''
     STATIC_DIR = os.path.join(os.path.dirname(__file__), 'static')
-    TEMPLATE_FLAG = 'STATICS_ENABLE_RESOURCE_{}'
+    RESOURCE_NAME = ''
 
     def __init__(self, app):
         self.minify = app.config['STATICS_MINIFY']
@@ -51,9 +51,9 @@ class ResourceBase(object):
         suffix_maxify = '.css'
         suffix_minify = '.min.css'
         if self.minify and self.file_exists(subdir, file_name_prefix, suffix_minify):
-            self.resources_js.append(os.path.join(self.DIR, subdir, file_name_prefix + suffix_minify))
+            self.resources_css.append(os.path.join(self.DIR, subdir, file_name_prefix + suffix_minify))
         elif self.file_exists(subdir, file_name_prefix, suffix_maxify):
-            self.resources_js.append(os.path.join(self.DIR, subdir, file_name_prefix + suffix_maxify))
+            self.resources_css.append(os.path.join(self.DIR, subdir, file_name_prefix + suffix_maxify))
         else:
             file_path = os.path.join(self.STATIC_DIR, self.DIR, subdir, file_name_prefix + suffix_maxify)
             raise IOError('Resource file not found: {}'.format(file_path))

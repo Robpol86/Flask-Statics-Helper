@@ -42,16 +42,14 @@ class Statics(object):
 
     def init_app(self, app):
         """Initialize the extension."""
-        # Set default Flask config options.
+        # Set default Flask config option.
         app.config.setdefault('STATICS_MINIFY', False)
-        for resource in resource_base.ResourceBase.__subclasses__():
-            app.config.setdefault(resource.TEMPLATE_FLAG, False)
 
         # Populate resources
         for resource in resource_base.ResourceBase.__subclasses__():
-            self.all_variables.append(resource.TEMPLATE_FLAG)
+            self.all_variables.append(resource.RESOURCE_NAME)
             obj = resource(app)
-            self.all_resources[resource.TEMPLATE_FLAG] = dict(css=tuple(obj.resources_css), js=tuple(obj.resources_js))
+            self.all_resources[resource.RESOURCE_NAME] = dict(css=tuple(obj.resources_css), js=tuple(obj.resources_js))
 
         # Add this instance to app.extensions.
         if not hasattr(app, 'extensions'):
@@ -63,6 +61,5 @@ class Statics(object):
         static_url_path = '{}/{}'.format(app.static_url_path, name)
         self.blueprint = Blueprint(name, __name__, template_folder='templates', static_folder='static',
                 static_url_path=static_url_path)
-        self.blueprint.add_app_template_global(tuple(self.all_variables), 'flask_statics_helper_all_variables')
-        self.blueprint.add_app_template_global(self.all_resources, 'flask_statics_helper_all_resources')
+        self.blueprint.add_app_template_global(self.all_resources, '_flask_statics_helper_all_resources')
         app.register_blueprint(self.blueprint)
