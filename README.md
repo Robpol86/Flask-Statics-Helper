@@ -4,11 +4,11 @@ Provides Bootstrap3 and other static resources in a modular fashion.
 
 The main purpose of this extension is to "modularize" static resources (css and js files) on a per-template basis. In a
 large Flask application, all views/templates don't use the same static resource such as d3js. If only one view uses d3js
-out of five or more, there is no reason to have the d3js <script /> tag included in all views.
+out of five or more, there is no reason to have the d3js `<script />` tag included in all views.
 
 This extension also provides a base template to be extended by your Flask application's templates for Bootstrap3 (like
 other Bootstrap3 extensions such as [this](https://github.com/mbr/flask-bootstrap) or
-[this](https://github.com/ryanolson/flask-bootstrap3).
+[this](https://github.com/ryanolson/flask-bootstrap3)).
 
 ## Supported Platforms
 
