@@ -35,7 +35,8 @@ Use with Bootstrap3 (automatically enables jQuery):
     <div class="navbar navbar-inverse navbar-static-top" role="navigation">
         <div class="container">
             <div class="navbar-header"> <!-- navbar-header -->
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
