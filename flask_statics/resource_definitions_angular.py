@@ -1,6 +1,6 @@
 """Holds defined resources for AngularJS, subclassing resource_base.ResourceBase."""
 
-from resource_definitions import ResourceAngular
+from flask_statics.resource_definitions import ResourceAngular
 
 
 class ResourceAngularAnimate(ResourceAngular):

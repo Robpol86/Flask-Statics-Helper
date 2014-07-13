@@ -1,6 +1,6 @@
 """Holds defined resources, subclassing resource_base.ResourceBase."""
 
-from resource_base import ResourceBase
+from flask_statics.resource_base import ResourceBase
 
 
 class ResourceJQuery(ResourceBase):

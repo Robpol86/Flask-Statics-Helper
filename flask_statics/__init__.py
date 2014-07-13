@@ -6,9 +6,9 @@ https://pypi.python.org/pypi/Flask-Statics-Helper
 
 from flask import Blueprint
 
-import resource_base
-import resource_definitions
-import resource_definitions_angular
+from flask_statics import resource_base
+from flask_statics import resource_definitions
+from flask_statics import resource_definitions_angular
 
 __author__ = '@Robpol86'
 __license__ = 'MIT'
@@ -27,7 +27,7 @@ def priority(var):
     Returns:
     Either a number if sorting is enforced for the value in `var`, or returns `var` itself.
     """
-    order = dict(JQUERY=0, BOOTSTRAP=1)
+    order = dict(JQUERY='0', BOOTSTRAP='1')
     return order.get(var, var)
 
 
