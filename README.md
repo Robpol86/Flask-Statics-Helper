@@ -10,10 +10,21 @@ This extension also provides a base template to be extended by your Flask applic
 other Bootstrap3 extensions such as [this](https://github.com/mbr/flask-bootstrap) or
 [this](https://github.com/ryanolson/flask-bootstrap3)).
 
+[![Build Status](https://travis-ci.org/Robpol86/Flask-Statics-Helper.svg?branch=master)]
+(https://travis-ci.org/Robpol86/Flask-Statics-Helper)
+[![Latest Version](https://pypip.in/version/Flask-Statics-Helper/badge.png)]
+(https://pypi.python.org/pypi/Flask-Statics-Helper/)
+[![Downloads](https://pypip.in/download/Flask-Statics-Helper/badge.png)]
+(https://pypi.python.org/pypi/Flask-Statics-Helper/)
+[![Download format](https://pypip.in/format/Flask-Statics-Helper/badge.png)]
+(https://pypi.python.org/pypi/Flask-Statics-Helper/)
+[![License](https://pypip.in/license/Flask-Statics-Helper/badge.png)]
+(https://pypi.python.org/pypi/Flask-Statics-Helper/)
+
 ## Supported Platforms
 
 * OSX and Linux.
-* Python 2.7
+* Python 2.6, 2.7, 3.3, 3.4
 * [Flask](http://flask.pocoo.org/) 0.10.1
 
 ## Quickstart
@@ -112,3 +123,13 @@ The following config settings are searched for in the Flask application's config
 * `STATICS_ENABLE_RESOURCE_ANGULARJS_SANITIZE` --  include resource in all templates.
 * `STATICS_ENABLE_RESOURCE_ANGULARJS_SCENARIO` --  include resource in all templates.
 * `STATICS_ENABLE_RESOURCE_ANGULARJS_TOUCH` --  include resource in all templates.
+
+## Changelog
+
+#### 0.1.1
+
+* Added Python 2.6 and 3.x support.
+
+#### 0.1.0
+
+* Initial release.
