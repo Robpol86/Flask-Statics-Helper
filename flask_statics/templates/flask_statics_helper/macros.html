@@ -23,7 +23,7 @@
     {%- set _ = load_list.append('ANGULARJS_SCENARIO') if STATICS_ENABLE_RESOURCE_ANGULARJS_SCENARIO -%}
     {%- set _ = load_list.append('ANGULARJS_TOUCH') if STATICS_ENABLE_RESOURCE_ANGULARJS_TOUCH -%}
 
-    {%- for suffix in _flask_statics_helper_all_resources -%}
+    {%- for suffix in _flask_statics_helper_all_variables -%}
         {%- if suffix in load_list or config.get('STATICS_ENABLE_RESOURCE_' + suffix) -%}
 
             {%- if kind == 'css' -%}
