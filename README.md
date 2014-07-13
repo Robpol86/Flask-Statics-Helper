@@ -88,9 +88,6 @@ The only `app.config` specific setting is `STATICS_MINIFY`. Everything else may 
 templates (so that css/js is included only for that template) or you may set it to True in the `app.config` if you want
 the resource enabled for all templates for some reason or another.
 
-AngularJS resources (like angular-animate.js) must also set `STATICS_ENABLE_RESOURCE_ANGULARJS` to true, since setting
-`STATICS_ENABLE_RESOURCE_ANGULARJS_ANIMATE` won't automatically include the `angular.js` file.
-
 The following config settings are searched for in the Flask application's configuration dictionary:
 * `STATICS_MINIFY` -- Have minified resources selected instead of uncompressed resources.
 * `STATICS_ENABLE_RESOURCE_ANGULARJS` -- include resource in all templates.

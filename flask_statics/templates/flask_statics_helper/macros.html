@@ -23,6 +23,8 @@
     {%- set _ = load_list.append('ANGULARJS_SCENARIO') if STATICS_ENABLE_RESOURCE_ANGULARJS_SCENARIO -%}
     {%- set _ = load_list.append('ANGULARJS_TOUCH') if STATICS_ENABLE_RESOURCE_ANGULARJS_TOUCH -%}
 
+    {%- set old_resources = [] -%}
+
     {%- for suffix in _flask_statics_helper_all_variables -%}
         {%- if suffix in load_list or config.get('STATICS_ENABLE_RESOURCE_' + suffix) -%}
 
@@ -33,11 +35,14 @@
             {%- endif -%}
 
             {%- for resource in resource_kind %}
-                {% if kind == 'css' -%}
-                    <link rel="stylesheet" href="/static/flask_statics_helper/{{ resource }}">
-                {%- else -%}
-                    <script src="/static/flask_statics_helper/{{ resource }}"></script>
-                {%- endif %}
+                {% if resource not in old_resources %}
+                    {% set _ = old_resources.append(resource) %}
+                    {% if kind == 'css' -%}
+                        <link rel="stylesheet" href="/static/flask_statics_helper/{{ resource }}">
+                    {%- else -%}
+                        <script src="/static/flask_statics_helper/{{ resource }}"></script>
+                    {%- endif %}
+                {% endif %}
             {% endfor -%}
 
         {%- endif -%}
