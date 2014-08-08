@@ -51,12 +51,12 @@ class ResourceBootstrapGrowl(ResourceBase):
 
 
 class ResourceBootstrapTypeahead(ResourceBase):
-    DIR = 'Bootstrap-3-Typeahead-3.0.3'
+    DIR = 'typeahead.js-0.10.5'
     RESOURCE_NAME = 'BOOTSTRAP_TYPEAHEAD'
 
     def __init__(self, app):
         super(ResourceBootstrapTypeahead, self).__init__(app)
-        self.add_js('', 'bootstrap3-typeahead')
+        self.add_js('', 'typeahead.bundle')
 
 
 class ResourceBootstrapValidator(ResourceBase):

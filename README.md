@@ -83,16 +83,16 @@ Use with Bootstrap3 (automatically enables jQuery):
 
 * [Bootstrap](http://getbootstrap.com/) 3.2.0
 * [jQuery](http://jquery.com/) 2.1.1
-* [Font Awesome](http://fortawesome.github.io/Font-Awesome/) 4.1.0
-* [WHHG Font](http://www.webhostinghub.com/glyphs/) (cloned July 9, 2014)
+* [Angular JS](https://angularjs.org/) 1.3.0 beta 14
 * [Bootstrap Growl](https://github.com/mouse0270/bootstrap-growl) 2.0.0
 * [Bootstrap X-Editable](http://vitalets.github.io/x-editable/) 1.5.1
-* [Bootstrap 3 Typeahead](https://github.com/bassjobsen/Bootstrap-3-Typeahead) 3.0.3
-* [CSShake](https://github.com/elrumordelaluz/csshake) (cloned July 9, 2014)
-* [Data Tables](http://datatables.net/) 1.10.0
-* [Angular JS](https://angularjs.org/) 1.3.0 beta 14
-* [D3](http://d3js.org/) 3.4.9
 * [BootstrapValidator](http://bootstrapvalidator.com/) 0.5.0
+* [CSShake](https://github.com/elrumordelaluz/csshake) (cloned July 9, 2014)
+* [D3](http://d3js.org/) 3.4.9
+* [Data Tables](http://datatables.net/) 1.10.0
+* [Font Awesome](http://fortawesome.github.io/Font-Awesome/) 4.1.0
+* [WHHG Font](http://www.webhostinghub.com/glyphs/) (cloned July 9, 2014)
+* [typeahead.js](https://github.com/twitter/typeahead.js) 0.10.5
 
 ## Configuration
 
@@ -127,6 +127,10 @@ The following config settings are searched for in the Flask application's config
 * `STATICS_ENABLE_RESOURCE_ANGULARJS_TOUCH` --  include resource in all templates.
 
 ## Changelog
+
+#### 0.3.0
+
+* Replaced Bootstrap 3 Typeahead with Twitter typeahead.js.
 
 #### 0.2.0
 
