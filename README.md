@@ -92,6 +92,7 @@ Use with Bootstrap3 (automatically enables jQuery):
 * [Data Tables](http://datatables.net/) 1.10.0
 * [Angular JS](https://angularjs.org/) 1.3.0 beta 14
 * [D3](http://d3js.org/) 3.4.9
+* [BootstrapValidator](http://bootstrapvalidator.com/) 0.5.0
 
 ## Configuration
 
@@ -106,6 +107,7 @@ The following config settings are searched for in the Flask application's config
 * `STATICS_ENABLE_RESOURCE_BOOTSTRAP_EDITABLE` --  include resource in all templates.
 * `STATICS_ENABLE_RESOURCE_BOOTSTRAP_GROWL` --  include resource in all templates.
 * `STATICS_ENABLE_RESOURCE_BOOTSTRAP_TYPEAHEAD` --  include resource in all templates.
+* `STATICS_ENABLE_RESOURCE_BOOTSTRAP_VALIDATOR` --  include resource in all templates.
 * `STATICS_ENABLE_RESOURCE_CSSHAKE` --  include resource in all templates.
 * `STATICS_ENABLE_RESOURCE_D3` --  include resource in all templates.
 * `STATICS_ENABLE_RESOURCE_DATATABLES` --  include resource in all templates.
@@ -125,6 +127,10 @@ The following config settings are searched for in the Flask application's config
 * `STATICS_ENABLE_RESOURCE_ANGULARJS_TOUCH` --  include resource in all templates.
 
 ## Changelog
+
+#### 0.2.0
+
+* Added BootstrapValidator resource.
 
 #### 0.1.1
 
