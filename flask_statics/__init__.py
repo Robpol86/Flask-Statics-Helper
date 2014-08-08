@@ -1,5 +1,10 @@
 """Provides Bootstrap3 and other static resources in a modular fashion.
 
+Adding new resources requires editing three files (besides tests):
+    resource_definitions.py
+    macros.html
+    README.md
+
 https://github.com/Robpol86/Flask-Statics-Helper
 https://pypi.python.org/pypi/Flask-Statics-Helper
 """
