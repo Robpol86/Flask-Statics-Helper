@@ -12,7 +12,7 @@ def test_minify():
 
     all_files = set([f for r in statics.all_resources.values() for f in r['css'] + r['js']])
     assert 0 == len([f for f in all_files if '.min.' in f])
-    assert 25 == len(all_files)
+    assert 27 == len(all_files)
 
     app = Flask(__name__)
     app.config['STATICS_MINIFY'] = True
@@ -21,8 +21,8 @@ def test_minify():
     assert True == app.config['STATICS_MINIFY']
 
     all_files = set([f for r in statics.all_resources.values() for f in r['css'] + r['js']])
-    assert 20 == len([f for f in all_files if '.min.' in f])
-    assert 25 == len(all_files)
+    assert 22 == len([f for f in all_files if '.min.' in f])
+    assert 27 == len(all_files)
 
 
 def test_blueprint():

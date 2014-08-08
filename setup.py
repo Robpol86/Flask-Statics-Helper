@@ -6,7 +6,8 @@ import setuptools.command.sdist
 from setuptools.command.test import test
 import sys
 
-setuptools.command.sdist.READMES = tuple(list(setuptools.command.sdist.READMES) + ['README.md'])
+setattr(setuptools.command.sdist, 'READMES',
+        tuple(list(getattr(setuptools.command.sdist, 'READMES', ())) + ['README.md']))
 here = os.path.abspath(os.path.dirname(__file__))
 
 
@@ -32,6 +33,13 @@ class PyTest(test):
         pytest = __import__('pytest')
         err_no = pytest.main(self.test_args)
         sys.exit(err_no)
+
+
+class PyTestCov(PyTest):
+    def finalize_options(self):
+        test.finalize_options(self)
+        setattr(self, 'test_args', ['--cov', 'flask_statics', 'tests'])
+        setattr(self, 'test_suite', True)
 
 
 # Setup definition.
@@ -72,7 +80,10 @@ setuptools.setup(
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
         'Operating System :: POSIX',
+        'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
     ],
 
     # What does your project relate to?
@@ -89,5 +100,5 @@ setuptools.setup(
     install_requires=['Flask'],
 
     tests_require=['pytest'],
-    cmdclass=dict(test=PyTest),
+    cmdclass=dict(test=PyTest, testcov=PyTestCov),
 )

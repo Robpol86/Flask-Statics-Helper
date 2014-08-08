@@ -12,7 +12,7 @@ from flask_statics import resource_definitions_angular
 
 __author__ = '@Robpol86'
 __license__ = 'MIT'
-__version__ = '0.1.1'
+__version__ = '0.2.0'
 
 
 def priority(var):
@@ -78,7 +78,7 @@ class Statics(object):
         name = 'flask_statics_helper'
         static_url_path = '{0}/{1}'.format(app.static_url_path, name)
         self.blueprint = Blueprint(name, __name__, template_folder='templates', static_folder='static',
-                static_url_path=static_url_path)
+                                   static_url_path=static_url_path)
         self.blueprint.add_app_template_global(self.all_variables, '_flask_statics_helper_all_variables')
         self.blueprint.add_app_template_global(self.all_resources, '_flask_statics_helper_all_resources')
         app.register_blueprint(self.blueprint)

@@ -1,17 +1,4 @@
-import re
-
 from flask import current_app, render_template_string
-import pytest
-
-
-@pytest.fixture(scope='session')
-def template():
-    """Load template example in README.md."""
-    regex = re.compile(r'```html\+django\n(.*)```', re.DOTALL)
-    file_path = 'README.md'
-    with open(file_path) as f:
-        template = re.findall(regex, f.read())[0]
-    return template
 
 
 def test_template(template):

@@ -59,6 +59,16 @@ class ResourceBootstrapTypeahead(ResourceBase):
         self.add_js('', 'bootstrap3-typeahead')
 
 
+class ResourceBootstrapValidator(ResourceBase):
+    DIR = 'BootstrapValidator-0.5.0'
+    RESOURCE_NAME = 'BOOTSTRAP_VALIDATOR'
+
+    def __init__(self, app):
+        super(ResourceBootstrapValidator, self).__init__(app)
+        self.add_css('css', 'bootstrapValidator')
+        self.add_js('js', 'bootstrapValidator')
+
+
 class ResourceCSShake(ResourceBase):
     DIR = 'csshake-20140709'
     RESOURCE_NAME = 'CSSHAKE'
