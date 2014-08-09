@@ -21,8 +21,8 @@ class ResourceBase(object):
     STATIC_DIR = os.path.join(os.path.dirname(__file__), 'static')
     RESOURCE_NAME = ''
 
-    def __init__(self, app):
-        self.minify = app.config['STATICS_MINIFY']
+    def __init__(self, minify):
+        self.minify = minify
         self.resources_css = list()
         self.resources_js = list()
 
@@ -69,3 +69,17 @@ class ResourceBase(object):
         else:
             file_path = os.path.join(self.STATIC_DIR, self.DIR, subdir, file_name_prefix + suffix_maxify)
             raise IOError('Resource file not found: {}'.format(file_path))
+
+
+def get_resources(minify=False):
+    """
+
+    :param minify:
+    :return:
+    """
+    all_resources = dict()
+    subclasses = ResourceBase.__subclasses__() + resource_definitions.ResourceAngular.__subclasses__()
+    for resource in subclasses:
+        obj = resource(minify)
+        all_resources[resource.RESOURCE_NAME] = dict(css=tuple(obj.resources_css), js=tuple(obj.resources_js))
+    return all_resources

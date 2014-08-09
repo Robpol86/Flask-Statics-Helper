@@ -28,9 +28,11 @@ if not all((__author__, __license__, __version__)):
 
 
 class PyTest(test):
+    TEST_ARGS = ['tests']
+
     def finalize_options(self):
         test.finalize_options(self)
-        setattr(self, 'test_args', ['tests'])
+        setattr(self, 'test_args', self.TEST_ARGS)
         setattr(self, 'test_suite', True)
 
     def run_tests(self):
@@ -40,18 +42,16 @@ class PyTest(test):
         sys.exit(err_no)
 
 
+class PyTestPdb(PyTest):
+    TEST_ARGS = ['--pdb', 'tests']
+
+
 class PyTestCov(PyTest):
-    def finalize_options(self):
-        test.finalize_options(self)
-        setattr(self, 'test_args', ['--cov', 'flask_statics', 'tests'])
-        setattr(self, 'test_suite', True)
+    TEST_ARGS = ['--cov', 'flask_statics', 'tests']
 
 
 class PyTestCovWeb(PyTest):
-    def finalize_options(self):
-        test.finalize_options(self)
-        setattr(self, 'test_args', ['--cov-report', 'html', '--cov', 'flask_statics', 'tests'])
-        setattr(self, 'test_suite', True)
+    TEST_ARGS = ['--cov-report', 'html', '--cov', 'flask_statics', 'tests']
 
     def run_tests(self):
         if find_executable('open'):
@@ -117,5 +117,5 @@ setuptools.setup(
     install_requires=['Flask'],
 
     tests_require=['pytest'],
-    cmdclass=dict(test=PyTest, testcov=PyTestCov, testcovweb=PyTestCovWeb),
+    cmdclass=dict(test=PyTest, testpdb=PyTestPdb, testcov=PyTestCov, testcovweb=PyTestCovWeb),
 )

@@ -1,7 +1,7 @@
 import re
 
 from flask import Flask
-from flask.ext.statics import Statics
+from flask.ext.statics import ALL_RESOURCES, ALL_RESOURCES_MINIFIED, Statics
 import pytest
 
 
@@ -24,3 +24,11 @@ def template():
     with open(file_path) as f:
         t = re.findall(regex, f.read())[0]
     return t
+
+
+@pytest.fixture(scope='session')
+def all_files_both():
+    """Get a set of all files for non-minified and minified resources."""
+    all_files = set([f for r in ALL_RESOURCES.values() for f in r['css'] + r['js']])
+    all_files_minified = set([f for r in ALL_RESOURCES_MINIFIED.values() for f in r['css'] + r['js']])
+    return all_files, all_files_minified
