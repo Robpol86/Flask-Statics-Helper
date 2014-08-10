@@ -10,16 +10,14 @@ import setuptools
 import setuptools.command.sdist
 from setuptools.command.test import test
 
-
-setattr(setuptools.command.sdist, 'READMES',
-        tuple(list(getattr(setuptools.command.sdist, 'READMES', ())) + ['README.md']))
-here = os.path.abspath(os.path.dirname(__file__))
+HERE = os.path.abspath(os.path.dirname(__file__))
+setuptools.command.sdist.READMES = tuple(list(getattr(setuptools.command.sdist, 'READMES', ())) + ['README.md'])
 
 
 # Get the long description and other data from the relevant files
-with open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
+with open(os.path.join(HERE, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
-with open(os.path.join(here, 'flask_statics', '__init__.py'), encoding='utf-8') as f:
+with open(os.path.join(HERE, 'flask_statics', '__init__.py'), encoding='utf-8') as f:
     lines = [l.strip() for l in f if l.startswith('__')]
 metadata = ast.literal_eval("{'" + ", '".join([l.replace(' = ', "': ") for l in lines]) + '}')
 __author__, __license__, __version__ = [metadata[k] for k in ('__author__', '__license__', '__version__')]
@@ -55,7 +53,7 @@ class PyTestCovWeb(PyTest):
 
     def run_tests(self):
         if find_executable('open'):
-            atexit.register(lambda: subprocess.call(['open', os.path.join(here, 'htmlcov', 'index.html')]))
+            atexit.register(lambda: subprocess.call(['open', os.path.join(HERE, 'htmlcov', 'index.html')]))
         PyTest.run_tests(self)
 
 

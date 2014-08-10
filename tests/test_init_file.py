@@ -1,7 +1,17 @@
 import os
 
 from flask import current_app, Flask
+import pytest
+
 from flask.ext.statics import Statics
+
+
+class FakeApp(object):
+    config = dict()
+    static_url_path = ''
+
+    def register_blueprint(self, _):
+        pass
 
 
 def test_minify():
@@ -41,3 +51,16 @@ def test_order():
     pos_bootstrap = statics.all_variables.index('BOOTSTRAP')
 
     assert pos_jquery < pos_bootstrap
+
+
+def test_multiple():
+    assert 'statics' in current_app.extensions
+
+    with pytest.raises(ValueError):
+        Statics(current_app)
+
+
+def test_one_dumb_line():
+    app = FakeApp()
+    Statics(app)
+    assert 'statics' in app.extensions
