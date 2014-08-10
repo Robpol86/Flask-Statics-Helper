@@ -62,7 +62,7 @@ def test_files_reachable_from_template(minify):
             for resource in found_css | found_js:
                 data_remote = c.get(remote_file(resource)).data
                 with open(local_file(resource), encoding='utf-8') as f:
-                    assert unicode(data_remote, encoding='utf-8') == f.read()
+                    assert data_remote.decode('utf-8') == f.read()
 
 
 def test_documented():
