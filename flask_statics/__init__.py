@@ -9,31 +9,22 @@ https://github.com/Robpol86/Flask-Statics-Helper
 https://pypi.python.org/pypi/Flask-Statics-Helper
 """
 
+import os
+
 from flask import Blueprint
 
 from flask_statics import resource_base
 from flask_statics import resource_definitions
 from flask_statics import resource_definitions_angular
+from flask_statics.helpers import get_resources, priority
 
 __author__ = '@Robpol86'
 __license__ = 'MIT'
-__version__ = '0.2.0'
-
-
-def priority(var):
-    """Prioritizes resource position in the final HTML. To be fed into sorted(key=).
-
-    Javascript consoles throw errors if Bootstrap's js file is mentioned before jQuery. Using this function such errors
-    can be avoided. Used internally.
-
-    Positional arguments:
-    var -- value sent by list.sorted(), which is a value in Statics().all_variables.
-
-    Returns:
-    Either a number if sorting is enforced for the value in `var`, or returns `var` itself.
-    """
-    order = dict(JQUERY='0', BOOTSTRAP='1')
-    return order.get(var, var)
+__version__ = '0.3.0'
+ABS_STATIC_ROOT = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'static')
+ALL_RESOURCES = get_resources(minify=False)
+ALL_VARIABLES = sorted(ALL_RESOURCES.keys(), key=priority)
+ALL_RESOURCES_MINIFIED = get_resources(minify=True)
 
 
 class _StaticsState(object):
@@ -56,8 +47,8 @@ class Statics(object):
     """
 
     def __init__(self, app=None):
-        self.all_variables = list()
-        self.all_resources = dict()
+        self.all_variables = None
+        self.all_resources = None
         self.blueprint = None
         if app is not None:
             self.init_app(app)
@@ -67,16 +58,15 @@ class Statics(object):
         # Set default Flask config option.
         app.config.setdefault('STATICS_MINIFY', False)
 
-        # Populate resources
-        subclasses = resource_base.ResourceBase.__subclasses__() + resource_definitions.ResourceAngular.__subclasses__()
-        for resource in subclasses:
-            obj = resource(app)
-            self.all_resources[resource.RESOURCE_NAME] = dict(css=tuple(obj.resources_css), js=tuple(obj.resources_js))
-        self.all_variables = sorted(self.all_resources.keys(), key=priority)
+        # Select resources.
+        self.all_resources = ALL_RESOURCES_MINIFIED if app.config.get('STATICS_MINIFY') else ALL_RESOURCES
+        self.all_variables = ALL_VARIABLES
 
         # Add this instance to app.extensions.
         if not hasattr(app, 'extensions'):
             app.extensions = dict()
+        if 'statics' in app.extensions:
+            raise ValueError('Already registered extension STATICS.')
         app.extensions['statics'] = _StaticsState(self, app)
 
         # Initialize blueprint.

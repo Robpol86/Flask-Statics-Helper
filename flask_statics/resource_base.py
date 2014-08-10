@@ -21,8 +21,8 @@ class ResourceBase(object):
     STATIC_DIR = os.path.join(os.path.dirname(__file__), 'static')
     RESOURCE_NAME = ''
 
-    def __init__(self, app):
-        self.minify = app.config['STATICS_MINIFY']
+    def __init__(self, minify):
+        self.minify = minify
         self.resources_css = list()
         self.resources_js = list()
 
@@ -56,7 +56,7 @@ class ResourceBase(object):
             self.resources_css.append(os.path.join(self.DIR, subdir, file_name_prefix + suffix_maxify))
         else:
             file_path = os.path.join(self.STATIC_DIR, self.DIR, subdir, file_name_prefix + suffix_maxify)
-            raise IOError('Resource file not found: {}'.format(file_path))
+            raise IOError('Resource file not found: {0}'.format(file_path))
 
     def add_js(self, subdir, file_name_prefix):
         """Same as self.add_css() but for js files."""
@@ -68,4 +68,4 @@ class ResourceBase(object):
             self.resources_js.append(os.path.join(self.DIR, subdir, file_name_prefix + suffix_maxify))
         else:
             file_path = os.path.join(self.STATIC_DIR, self.DIR, subdir, file_name_prefix + suffix_maxify)
-            raise IOError('Resource file not found: {}'.format(file_path))
+            raise IOError('Resource file not found: {0}'.format(file_path))
