@@ -25,7 +25,6 @@ ABS_STATIC_ROOT = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'stat
 ALL_RESOURCES = get_resources(minify=False)
 ALL_VARIABLES = sorted(ALL_RESOURCES.keys(), key=priority)
 ALL_RESOURCES_MINIFIED = get_resources(minify=True)
-ALL_VARIABLES_MINIFIED = sorted(ALL_RESOURCES_MINIFIED.keys(), key=priority)
 
 
 class _StaticsState(object):
@@ -60,10 +59,8 @@ class Statics(object):
         app.config.setdefault('STATICS_MINIFY', False)
 
         # Select resources.
-        if app.config.get('STATICS_MINIFY'):
-            self.all_resources, self.all_variables = ALL_RESOURCES_MINIFIED, ALL_VARIABLES_MINIFIED
-        else:
-            self.all_resources, self.all_variables = ALL_RESOURCES, ALL_VARIABLES
+        self.all_resources = ALL_RESOURCES_MINIFIED if app.config.get('STATICS_MINIFY') else ALL_RESOURCES
+        self.all_variables = ALL_VARIABLES
 
         # Add this instance to app.extensions.
         if not hasattr(app, 'extensions'):
