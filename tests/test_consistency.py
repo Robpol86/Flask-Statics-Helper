@@ -1,5 +1,6 @@
 from codecs import open
 import os
+import random
 import re
 from string import Template
 
@@ -36,7 +37,7 @@ def test_files_reachable_from_template(minify):
     remote_file = lambda x: '/static/flask_statics_helper/{0}'.format(x)
 
     # Create Flask app.
-    app = Flask(__name__ + str(minify))
+    app = Flask('{0}_{1}'.format(__name__, str(random.randint(1, 100))))
     app.config['STATICS_MINIFY'] = minify
     Statics(app)
     all_resources = ((k, set(v['css']), set(v['js']))
