@@ -1,3 +1,4 @@
+from codecs import open
 import os
 import re
 from string import Template
@@ -60,12 +61,12 @@ def test_files_reachable_from_template(minify):
         with app.test_client() as c:
             for resource in found_css | found_js:
                 data_remote = c.get(remote_file(resource)).data
-                with open(local_file(resource)) as f:
-                    assert data_remote == f.read()
+                with open(local_file(resource), encoding='utf-8') as f:
+                    assert unicode(data_remote, encoding='utf-8') == f.read()
 
 
 def test_documented():
-    with open('README.md') as f:
+    with open('README.md', encoding='utf-8') as f:
         readme = f.read()
     for name in ALL_VARIABLES:
         assert '`STATICS_ENABLE_RESOURCE_{0}`'.format(name) in readme
