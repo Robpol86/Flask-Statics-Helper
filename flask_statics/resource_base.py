@@ -56,7 +56,7 @@ class ResourceBase(object):
             self.resources_css.append(os.path.join(self.DIR, subdir, file_name_prefix + suffix_maxify))
         else:
             file_path = os.path.join(self.STATIC_DIR, self.DIR, subdir, file_name_prefix + suffix_maxify)
-            raise IOError('Resource file not found: {}'.format(file_path))
+            raise IOError('Resource file not found: {0}'.format(file_path))
 
     def add_js(self, subdir, file_name_prefix):
         """Same as self.add_css() but for js files."""
@@ -68,4 +68,4 @@ class ResourceBase(object):
             self.resources_js.append(os.path.join(self.DIR, subdir, file_name_prefix + suffix_maxify))
         else:
             file_path = os.path.join(self.STATIC_DIR, self.DIR, subdir, file_name_prefix + suffix_maxify)
-            raise IOError('Resource file not found: {}'.format(file_path))
+            raise IOError('Resource file not found: {0}'.format(file_path))
