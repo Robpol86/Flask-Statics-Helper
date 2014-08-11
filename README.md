@@ -12,6 +12,8 @@ other Bootstrap3 extensions such as [this](https://github.com/mbr/flask-bootstra
 
 [![Build Status](https://travis-ci.org/Robpol86/Flask-Statics-Helper.svg?branch=master)]
 (https://travis-ci.org/Robpol86/Flask-Statics-Helper)
+[![Coverage Status](https://img.shields.io/coveralls/Robpol86/Flask-Statics-Helper.svg)]
+(https://coveralls.io/r/Robpol86/Flask-Statics-Helper)
 [![Latest Version](https://pypip.in/version/Flask-Statics-Helper/badge.png)]
 (https://pypi.python.org/pypi/Flask-Statics-Helper/)
 [![Downloads](https://pypip.in/download/Flask-Statics-Helper/badge.png)]

@@ -39,7 +39,7 @@ def get_metadata(main_file):
 
 
 class PyTest(test):
-    TEST_ARGS = ['tests']
+    TEST_ARGS = ['--cov-report', 'term-missing', '--cov', 'flask_statics', 'tests']
 
     def finalize_options(self):
         test.finalize_options(self)
@@ -57,10 +57,6 @@ class PyTestPdb(PyTest):
     TEST_ARGS = ['--pdb', 'tests']
 
 
-class PyTestCov(PyTest):
-    TEST_ARGS = ['--cov', 'flask_statics', 'tests']
-
-
 class PyTestCovWeb(PyTest):
     TEST_ARGS = ['--cov-report', 'html', '--cov', 'flask_statics', 'tests']
 
@@ -68,6 +64,24 @@ class PyTestCovWeb(PyTest):
         if find_executable('open'):
             atexit.register(lambda: subprocess.call(['open', os.path.join(HERE, 'htmlcov', 'index.html')]))
         PyTest.run_tests(self)
+
+
+class CmdFlake(setuptools.Command):
+    user_options = []
+    CMD_ARGS = ['flake8', '-v', '--max-line-length', '120', '--statistics', '.']
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        subprocess.call(self.CMD_ARGS)
+
+
+class CmdLint(CmdFlake):
+    CMD_ARGS = ['pylint', '--max-line-length', '120', 'flask_statics']
 
 
 # Setup definition.
@@ -120,8 +134,8 @@ setuptools.setup(
     # https://packaging.python.org/en/latest/technical.html#install-requires-vs-requirements-files
     install_requires=['Flask'],
 
-    tests_require=['pytest'],
-    cmdclass=dict(test=PyTest, testpdb=PyTestPdb, testcov=PyTestCov, testcovweb=PyTestCovWeb),
+    tests_require=['pytest', 'pytest-cov'],
+    cmdclass=dict(test=PyTest, testpdb=PyTestPdb, testcovweb=PyTestCovWeb, style=CmdFlake, lint=CmdLint),
 
     # Pass the rest from get_metadata().
     **get_metadata(os.path.join('flask_statics', '__init__.py'))
