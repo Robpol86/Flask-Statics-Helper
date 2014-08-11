@@ -68,7 +68,7 @@ class PyTestCovWeb(PyTest):
 
 class CmdFlake(setuptools.Command):
     user_options = []
-    CMD_ARGS = ['flake8', '-v', '--max-line-length', '120', '--statistics', '.']
+    CMD_ARGS = ['flake8', '--max-line-length', '120', '--statistics', 'flask_statics']
 
     def initialize_options(self):
         pass
