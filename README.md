@@ -80,14 +80,14 @@ Use with Bootstrap3 (automatically enables jQuery):
 
 ## Available Resources
 
-* [Bootstrap](http://getbootstrap.com/) 3.2.0
+* [Bootstrap](http://getbootstrap.com/) 3.3.1
 * [jQuery](http://jquery.com/) 2.1.1
 * [Angular JS](https://angularjs.org/) 1.3.0 beta 14
 * [Bootstrap Growl](https://github.com/mouse0270/bootstrap-growl) 2.0.0
 * [Bootstrap X-Editable](http://vitalets.github.io/x-editable/) 1.5.1
-* [BootstrapValidator](http://bootstrapvalidator.com/) 0.5.0
+* [BootstrapValidator](http://bootstrapvalidator.com/) 0.5.3
 * [CSShake](https://github.com/elrumordelaluz/csshake) (cloned July 9, 2014)
-* [D3](http://d3js.org/) 3.4.9
+* [D3](http://d3js.org/) 3.4.13
 * [Data Tables](http://datatables.net/) 1.10.0
 * [Font Awesome](http://fortawesome.github.io/Font-Awesome/) 4.1.0
 * [WHHG Font](http://www.webhostinghub.com/glyphs/) (cloned July 9, 2014)

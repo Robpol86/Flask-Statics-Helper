@@ -1,4 +1,8 @@
 (function($) {
+    /**
+     * Vietnamese language package
+     * Translated by @nghuuphuoc
+     */
     $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
         base64: {
             'default': 'Vui lòng nhập chuỗi mã hoá base64 hợp lệ'
@@ -16,6 +20,9 @@
             more: 'Vui lòng chọn nhiều nhất %s lựa chọn',
             between: 'Vui lòng chọn %s - %s lựa chọn'
         },
+        color: {
+            'default': 'Vui lòng nhập mã màu hợp lệ'
+        },
         creditCard: {
             'default': 'Vui lòng nhập số thẻ tín dụng hợp lệ'
         },
@@ -26,7 +33,10 @@
             'default': 'Vui lòng nhập số CVV hợp lệ'
         },
         date: {
-            'default': 'Vui lòng nhập ngày hợp lệ'
+            'default': 'Vui lòng nhập ngày hợp lệ',
+            min: 'Vui lòng nhập ngày sau %s',
+            max: 'Vui lòng nhập ngày trước %s',
+            range: 'Vui lòng nhập ngày trong khoảng %s - %s'
         },
         different: {
             'default': 'Vui lòng nhập một giá trị khác'
@@ -126,10 +136,10 @@
                 NO: 'Na Uy',
                 PK: 'Pakistan',
                 PL: 'Ba Lan',
-                PS: 'Palestinian',
+                PS: 'Palestine',
                 PT: 'Bồ Đào Nha',
                 QA: 'Qatar',
-                RO: 'Rumani',
+                RO: 'Romania',
                 RS: 'Serbia',
                 SA: 'Ả Rập Xê Út',
                 SE: 'Thuỵ Điển',
@@ -148,10 +158,11 @@
             country: 'Vui lòng nhập mã ID hợp lệ của %s',
             countries: {
                 BA: 'Bosnia và Herzegovina',
-                BG: 'Bulgari',
+                BG: 'Bulgaria',
                 BR: 'Brazil',
                 CH: 'Thuỵ Sĩ',
                 CL: 'Chi Lê',
+                CN: 'Trung Quốc',
                 CZ: 'Séc',
                 DK: 'Đan Mạch',
                 EE: 'Estonia',
@@ -165,12 +176,13 @@
                 ME: 'Montenegro',
                 MK: 'Macedonia',
                 NL: 'Hà Lan',
-                RO: 'Rumani',
+                RO: 'Romania',
                 RS: 'Serbia',
                 SE: 'Thuỵ Điển',
                 SI: 'Slovenia',
                 SK: 'Slovakia',
                 SM: 'San Marino',
+                TH: 'Thái Lan',
                 ZA: 'Nam Phi'
             }
         },
@@ -179,6 +191,9 @@
         },
         imei: {
             'default': 'Vui lòng nhập số IMEI hợp lệ'
+        },
+        imo: {
+            'default': 'Vui lòng nhập số IMO hợp lệ'
         },
         integer: {
             'default': 'Vui lòng nhập số hợp lệ'
@@ -207,6 +222,9 @@
         mac: {
             'default': 'Vui lòng nhập địa chỉ MAC hợp lệ'
         },
+        meid: {
+            'default': 'Vui lòng nhập số MEID hợp lệ'
+        },
         notEmpty: {
             'default': 'Vui lòng nhập giá trị'
         },
@@ -218,8 +236,22 @@
             countryNotSupported: 'Mã quốc gia %s không được hỗ trợ',
             country: 'Vui lòng nhập số điện thoại hợp lệ của %s',
             countries: {
+                BR: 'Brazil',
+                CN: 'Trung Quốc',
+                CZ: 'Séc',
+                DE: 'Đức',
+                DK: 'Đan Mạch',
+                ES: 'Tây Ban Nha',
+                FR: 'Pháp',
                 GB: 'Vương quốc Anh',
-                US: 'Mỹ'
+                MA: 'Maroc',
+                PK: 'Pakistan',
+                RO: 'Romania',
+                RU: 'Nga',
+                SK: 'Slovakia',
+                TH: 'Thái Lan',
+                US: 'Mỹ',
+                VE: 'Venezuela'
             }
         },
         regexp: {
@@ -267,7 +299,8 @@
             countries: {
                 AT: 'Áo',
                 BE: 'Bỉ',
-                BG: 'Bulgari',
+                BG: 'Bulgaria',
+                BR: 'Brazil',
                 CH: 'Thuỵ Sĩ',
                 CY: 'Síp',
                 CZ: 'Séc',
@@ -283,21 +316,24 @@
                 HU: 'Hungari',
                 HR: 'Croatia',
                 IE: 'Ireland',
+                IS: 'Iceland',
                 IT: 'Ý',
                 LT: 'Lithuania',
                 LU: 'Luxembourg',
                 LV: 'Latvia',
-                MT: 'Maltese',
+                MT: 'Malta',
                 NL: 'Hà Lan',
                 NO: 'Na Uy',
                 PL: 'Ba Lan',
                 PT: 'Bồ Đào Nha',
-                RO: 'Rumani',
+                RO: 'Romania',
                 RU: 'Nga',
-                RS: 'Serbi',
+                RS: 'Serbia',
                 SE: 'Thuỵ Điển',
                 SI: 'Slovenia',
-                SK: 'Slovakia'
+                SK: 'Slovakia',
+                VE: 'Venezuela',
+                ZA: 'Nam Phi'
             }
         },
         vin: {
@@ -306,16 +342,28 @@
         zipCode: {
             'default': 'Vui lòng nhập mã bưu điện hợp lệ',
             countryNotSupported: 'Mã quốc gia %s không được hỗ trợ',
-            country: 'Vui lòng nhập %s',
+            country: 'Vui lòng nhập mã bưu điện hợp lệ của %s',
             countries: {
-                'CA': 'mã bưu điện của Canada',
-                'DK': 'mã bưu điện của Đan Mạch',
-                'GB': 'mã bưu điện của Vương quốc Anh',
-                'IT': 'mã bưu điện của Ý',
-                'NL': 'mã bưu điện của Hà Lan',
-                'SE': 'mã bưu điện của Thuỵ Sĩ',
-                'SG': 'mã bưu điện của Singapore',
-                'US': 'mã bưu điện của Mỹ'
+                AT: 'Áo',
+                BR: 'Brazil',
+                CA: 'Canada',
+                CH: 'Thuỵ Sĩ',
+                CZ: 'Séc',
+                DE: 'Đức',
+                DK: 'Đan Mạch',
+                FR: 'Pháp',
+                GB: 'Vương quốc Anh',
+                IE: 'Ireland',
+                IT: 'Ý',
+                MA: 'Maroc',
+                NL: 'Hà Lan',
+                PT: 'Bồ Đào Nha',
+                RO: 'Romania',
+                RU: 'Nga',
+                SE: 'Thuỵ Sĩ',
+                SG: 'Singapore',
+                SK: 'Slovakia',
+                US: 'Mỹ'
             }
         }
     });

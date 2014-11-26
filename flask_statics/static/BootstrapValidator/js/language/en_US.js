@@ -1,7 +1,6 @@
 (function($) {
     /**
-     * Default English package
-     * It's included in the dist, so you do NOT need to include it to your head tag
+     * Default English package. It's included in the dist, so you do NOT need to include it to your head tag
      * The only reason I put it here is that you can clone it, and translate it into your language
      */
     $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
@@ -21,6 +20,9 @@
             more: 'Please choose %s options at maximum',
             between: 'Please choose %s - %s options'
         },
+        color: {
+            'default': 'Please enter a valid color'
+        },
         creditCard: {
             'default': 'Please enter a valid credit card number'
         },
@@ -31,7 +33,10 @@
             'default': 'Please enter a valid CVV number'
         },
         date: {
-            'default': 'Please enter a valid date'
+            'default': 'Please enter a valid date',
+            min: 'Please enter a date after %s',
+            max: 'Please enter a date before %s',
+            range: 'Please enter a date in the range %s - %s'
         },
         different: {
             'default': 'Please enter a different value'
@@ -131,7 +136,7 @@
                 NO: 'Norway',
                 PK: 'Pakistan',
                 PL: 'Poland',
-                PS: 'Palestinian',
+                PS: 'Palestine',
                 PT: 'Portugal',
                 QA: 'Qatar',
                 RO: 'Romania',
@@ -150,33 +155,35 @@
         id: {
             'default': 'Please enter a valid identification number',
             countryNotSupported: 'The country code %s is not supported',
-            country: 'Please enter a valid %s identification number',
+            country: 'Please enter a valid identification number in %s',
             countries: {
                 BA: 'Bosnia and Herzegovina',
-                BG: 'Bulgarian',
-                BR: 'Brazilian',
-                CH: 'Swiss',
-                CL: 'Chilean',
-                CZ: 'Czech',
-                DK: 'Danish',
-                EE: 'Estonian',
-                ES: 'Spanish',
-                FI: 'Finnish',
-                HR: 'Croatian',
-                IE: 'Irish',
+                BG: 'Bulgaria',
+                BR: 'Brazil',
+                CH: 'Switzerland',
+                CL: 'Chile',
+                CN: 'China',
+                CZ: 'Czech Republic',
+                DK: 'Denmark',
+                EE: 'Estonia',
+                ES: 'Spain',
+                FI: 'Finland',
+                HR: 'Croatia',
+                IE: 'Ireland',
                 IS: 'Iceland',
-                LT: 'Lithuanian',
-                LV: 'Latvian',
+                LT: 'Lithuania',
+                LV: 'Latvia',
                 ME: 'Montenegro',
-                MK: 'Macedonian',
-                NL: 'Dutch',
-                RO: 'Romanian',
-                RS: 'Serbian',
-                SE: 'Swedish',
-                SI: 'Slovenian',
-                SK: 'Slovak',
+                MK: 'Macedonia',
+                NL: 'Netherlands',
+                RO: 'Romania',
+                RS: 'Serbia',
+                SE: 'Sweden',
+                SI: 'Slovenia',
+                SK: 'Slovakia',
                 SM: 'San Marino',
-                ZA: 'South African'
+                TH: 'Thailand',
+                ZA: 'South Africa'
             }
         },
         identical: {
@@ -184,6 +191,9 @@
         },
         imei: {
             'default': 'Please enter a valid IMEI number'
+        },
+        imo: {
+            'default': 'Please enter a valid IMO number'
         },
         integer: {
             'default': 'Please enter a valid number'
@@ -212,6 +222,9 @@
         mac: {
             'default': 'Please enter a valid MAC address'
         },
+        meid: {
+            'default': 'Please enter a valid MEID number'
+        },
         notEmpty: {
             'default': 'Please enter a value'
         },
@@ -223,8 +236,22 @@
             countryNotSupported: 'The country code %s is not supported',
             country: 'Please enter a valid phone number in %s',
             countries: {
+                BR: 'Brazil',
+                CN: 'China',
+                CZ: 'Czech Republic',
+                DE: 'Germany',
+                DK: 'Denmark',
+                ES: 'Spain',
+                FR: 'France',
                 GB: 'United Kingdom',
-                US: 'USA'
+                MA: 'Morocco',
+                PK: 'Pakistan',
+                RO: 'Romania',
+                RU: 'Russia',
+                SK: 'Slovakia',
+                TH: 'Thailand',
+                US: 'USA',
+                VE: 'Venezuela'
             }
         },
         regexp: {
@@ -268,59 +295,75 @@
         vat: {
             'default': 'Please enter a valid VAT number',
             countryNotSupported: 'The country code %s is not supported',
-            country: 'Please enter a valid %s VAT number',
+            country: 'Please enter a valid VAT number in %s',
             countries: {
-                AT: 'Austrian',
-                BE: 'Belgian',
-                BG: 'Bulgarian',
-                CH: 'Swiss',
-                CY: 'Cypriot',
-                CZ: 'Czech',
-                DE: 'German',
-                DK: 'Danish',
-                EE: 'Estonian',
-                ES: 'Spanish',
-                FI: 'Finnish',
-                FR: 'French',
+                AT: 'Austria',
+                BE: 'Belgium',
+                BG: 'Bulgaria',
+                BR: 'Brazil',
+                CH: 'Switzerland',
+                CY: 'Cyprus',
+                CZ: 'Czech Republic',
+                DE: 'Germany',
+                DK: 'Denmark',
+                EE: 'Estonia',
+                ES: 'Spain',
+                FI: 'Finland',
+                FR: 'France',
                 GB: 'United Kingdom',
-                GR: 'Greek',
-                EL: 'Greek',
-                HU: 'Hungarian',
-                HR: 'Croatian',
-                IE: 'Irish',
-                IT: 'Italian',
-                LT: 'Lithuanian',
+                GR: 'Greece',
+                EL: 'Greece',
+                HU: 'Hungary',
+                HR: 'Croatia',
+                IE: 'Ireland',
+                IS: 'Iceland',
+                IT: 'Italy',
+                LT: 'Lithuania',
                 LU: 'Luxembourg',
-                LV: 'Latvian',
-                MT: 'Maltese',
-                NL: 'Dutch',
-                NO: 'Norwegian',
-                PL: 'Polish',
-                PT: 'Portuguese',
-                RO: 'Romanian',
-                RU: 'Russian',
-                RS: 'Serbian',
-                SE: 'Swedish',
-                SI: 'Slovenian',
-                SK: 'Slovak'
+                LV: 'Latvia',
+                MT: 'Malta',
+                NL: 'Netherlands',
+                NO: 'Norway',
+                PL: 'Poland',
+                PT: 'Portugal',
+                RO: 'Romania',
+                RU: 'Russia',
+                RS: 'Serbia',
+                SE: 'Sweden',
+                SI: 'Slovenia',
+                SK: 'Slovakia',
+                VE: 'Venezuela',
+                ZA: 'South Africa'
             }
         },
         vin: {
             'default': 'Please enter a valid VIN number'
         },
         zipCode: {
-            'default': 'Please enter a valid zip code',
+            'default': 'Please enter a valid postal code',
             countryNotSupported: 'The country code %s is not supported',
-            country: 'Please enter a valid %s',
+            country: 'Please enter a valid postal code in %s',
             countries: {
-                'CA': 'Canadian postal code',
-                'DK': 'Danish postal code',
-                'GB': 'United Kingdom postal code',
-                'IT': 'Italian postal code',
-                'NL': 'Dutch postal code',
-                'SE': 'Swiss postal code',
-                'SG': 'Singapore postal code',
-                'US': 'US zip code'
+                AT: 'Austria',
+                BR: 'Brazil',
+                CA: 'Canada',
+                CH: 'Switzerland',
+                CZ: 'Czech Republic',
+                DE: 'Germany',
+                DK: 'Denmark',
+                FR: 'France',
+                GB: 'United Kingdom',
+                IE: 'Ireland',
+                IT: 'Italy',
+                MA: 'Morocco',
+                NL: 'Netherlands',
+                PT: 'Portugal',
+                RO: 'Romania',
+                RU: 'Russia',
+                SE: 'Sweden',
+                SG: 'Singapore',
+                SK: 'Slovakia',
+                US: 'USA'
             }
         }
     });
