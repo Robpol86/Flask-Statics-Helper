@@ -51,7 +51,7 @@ class ResourceBootstrapGrowl(ResourceBase):
 
 
 class ResourceBootstrapTypeahead(ResourceBase):
-    DIR = 'typeahead.js'
+    DIR = 'typeahead'
     RESOURCE_NAME = 'BOOTSTRAP_TYPEAHEAD'
 
     def __init__(self, minify):

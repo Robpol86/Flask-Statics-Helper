@@ -1,6 +1,7 @@
 """Holds the base Resource class."""
 
 import os
+import posixpath
 
 
 class ResourceBase(object):
@@ -51,9 +52,9 @@ class ResourceBase(object):
         suffix_maxify = '.css'
         suffix_minify = '.min.css'
         if self.minify and self.file_exists(subdir, file_name_prefix, suffix_minify):
-            self.resources_css.append(os.path.join(self.DIR, subdir, file_name_prefix + suffix_minify))
+            self.resources_css.append(posixpath.join(self.DIR, subdir, file_name_prefix + suffix_minify))
         elif self.file_exists(subdir, file_name_prefix, suffix_maxify):
-            self.resources_css.append(os.path.join(self.DIR, subdir, file_name_prefix + suffix_maxify))
+            self.resources_css.append(posixpath.join(self.DIR, subdir, file_name_prefix + suffix_maxify))
         else:
             file_path = os.path.join(self.STATIC_DIR, self.DIR, subdir, file_name_prefix + suffix_maxify)
             raise IOError('Resource file not found: {0}'.format(file_path))
@@ -63,9 +64,9 @@ class ResourceBase(object):
         suffix_maxify = '.js'
         suffix_minify = '.min.js'
         if self.minify and self.file_exists(subdir, file_name_prefix, suffix_minify):
-            self.resources_js.append(os.path.join(self.DIR, subdir, file_name_prefix + suffix_minify))
+            self.resources_js.append(posixpath.join(self.DIR, subdir, file_name_prefix + suffix_minify))
         elif self.file_exists(subdir, file_name_prefix, suffix_maxify):
-            self.resources_js.append(os.path.join(self.DIR, subdir, file_name_prefix + suffix_maxify))
+            self.resources_js.append(posixpath.join(self.DIR, subdir, file_name_prefix + suffix_maxify))
         else:
             file_path = os.path.join(self.STATIC_DIR, self.DIR, subdir, file_name_prefix + suffix_maxify)
             raise IOError('Resource file not found: {0}'.format(file_path))
