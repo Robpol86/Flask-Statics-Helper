@@ -13,8 +13,6 @@ other Bootstrap3 extensions such as [this](https://github.com/mbr/flask-bootstra
 * Python 2.6, 2.7, 3.3, and 3.4 supported on Linux and OS X.
 * Python 2.7, 3.3, and 3.4 supported on Windows (both 32 and 64 bit versions of Python).
 
-Tested on Windows XP and Windows 10 technical preview.
-
 [![Build Status Windows](https://img.shields.io/appveyor/ci/Robpol86/Flask-Statics-Helper.svg?style=flat-square)]
 (https://ci.appveyor.com/project/Robpol86/Flask-Statics-Helper)
 [![Build Status](https://img.shields.io/travis/Robpol86/Flask-Statics-Helper/master.svg?style=flat-square)]
@@ -126,6 +124,17 @@ The following config settings are searched for in the Flask application's config
 * `STATICS_ENABLE_RESOURCE_ANGULARJS_TOUCH` --  include resource in all templates.
 
 ## Changelog
+
+#### 1.0.0
+
+* Windows compatibility.
+* Updated Bootstrap to 3.3.1.
+* Updated Angular JS to 1.3.4.
+* Updated BootstrapValidator to 0.5.3.
+* Updated D3 to 3.4.13.
+* Updated Data Tables to 1.10.4.
+* Updated Font Awesome to 4.2.0.
+* Updated WHHG Font to latest as of November 26, 2014.
 
 #### 0.3.0
 
