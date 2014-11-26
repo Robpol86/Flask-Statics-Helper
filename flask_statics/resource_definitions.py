@@ -4,7 +4,7 @@ from flask_statics.resource_base import ResourceBase
 
 
 class ResourceJQuery(ResourceBase):
-    DIR = 'jquery-2.1.1'
+    DIR = 'jquery'
     RESOURCE_NAME = 'JQUERY'
 
     def __init__(self, minify):
@@ -13,7 +13,7 @@ class ResourceJQuery(ResourceBase):
 
 
 class ResourceAngular(ResourceBase):
-    DIR = 'angular-1.3.0-beta.14'
+    DIR = 'angular'
     RESOURCE_NAME = 'ANGULARJS'
 
     def __init__(self, minify):
@@ -22,7 +22,7 @@ class ResourceAngular(ResourceBase):
 
 
 class ResourceBootstrap(ResourceBase):
-    DIR = 'bootstrap-3.2.0'
+    DIR = 'bootstrap'
     RESOURCE_NAME = 'BOOTSTRAP'
 
     def __init__(self, minify):
@@ -32,7 +32,7 @@ class ResourceBootstrap(ResourceBase):
 
 
 class ResourceBootstrapEditable(ResourceBase):
-    DIR = 'bootstrap3-editable-1.5.1'
+    DIR = 'bootstrap3-editable'
     RESOURCE_NAME = 'BOOTSTRAP_EDITABLE'
 
     def __init__(self, minify):
@@ -42,7 +42,7 @@ class ResourceBootstrapEditable(ResourceBase):
 
 
 class ResourceBootstrapGrowl(ResourceBase):
-    DIR = 'bootstrap-growl-2.0.0'
+    DIR = 'bootstrap-growl'
     RESOURCE_NAME = 'BOOTSTRAP_GROWL'
 
     def __init__(self, minify):
@@ -51,7 +51,7 @@ class ResourceBootstrapGrowl(ResourceBase):
 
 
 class ResourceBootstrapTypeahead(ResourceBase):
-    DIR = 'typeahead.js-0.10.5'
+    DIR = 'typeahead.js'
     RESOURCE_NAME = 'BOOTSTRAP_TYPEAHEAD'
 
     def __init__(self, minify):
@@ -60,7 +60,7 @@ class ResourceBootstrapTypeahead(ResourceBase):
 
 
 class ResourceBootstrapValidator(ResourceBase):
-    DIR = 'BootstrapValidator-0.5.0'
+    DIR = 'BootstrapValidator'
     RESOURCE_NAME = 'BOOTSTRAP_VALIDATOR'
 
     def __init__(self, minify):
@@ -70,7 +70,7 @@ class ResourceBootstrapValidator(ResourceBase):
 
 
 class ResourceCSShake(ResourceBase):
-    DIR = 'csshake-20140709'
+    DIR = 'csshake'
     RESOURCE_NAME = 'CSSHAKE'
 
     def __init__(self, minify):
@@ -79,7 +79,7 @@ class ResourceCSShake(ResourceBase):
 
 
 class ResourceD3(ResourceBase):
-    DIR = 'd3-3.4.9'
+    DIR = 'd3'
     RESOURCE_NAME = 'D3'
 
     def __init__(self, minify):
@@ -88,7 +88,7 @@ class ResourceD3(ResourceBase):
 
 
 class ResourceDataTables(ResourceBase):
-    DIR = 'DataTables-1.10.0'
+    DIR = 'DataTables'
     RESOURCE_NAME = 'DATATABLES'
 
     def __init__(self, minify):
@@ -98,7 +98,7 @@ class ResourceDataTables(ResourceBase):
 
 
 class ResourceFontAwesome(ResourceBase):
-    DIR = 'font-awesome-4.1.0'
+    DIR = 'font-awesome'
     RESOURCE_NAME = 'FONT_AWESOME'
 
     def __init__(self, minify):
@@ -107,7 +107,7 @@ class ResourceFontAwesome(ResourceBase):
 
 
 class ResourceWHHGFont(ResourceBase):
-    DIR = 'whhg-font-20140709'
+    DIR = 'whhg-font'
     RESOURCE_NAME = 'WHHG_FONT'
 
     def __init__(self, minify):
