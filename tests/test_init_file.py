@@ -43,10 +43,7 @@ def test_blueprint():
     expected_static_path = os.path.join(expected_root, 'flask_statics', 'static')
     actual_static_path = statics.blueprint.static_folder
 
-    if os.name == 'nt':
-        assert expected_static_path.lower() == actual_static_path
-    else:
-        assert expected_static_path == actual_static_path
+    assert expected_static_path == actual_static_path
 
 
 def test_order():
