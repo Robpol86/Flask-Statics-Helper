@@ -2,6 +2,9 @@
 
 from distutils.version import LooseVersion
 import json
+from linecache import getline
+import os
+import re
 try:
     from urllib2 import urlopen
 except ImportError:
@@ -18,7 +21,9 @@ def download(url):
 
 
 def test_bootstrap():
-    current_version = ResourceBootstrap.DIR.split('-')[-1]
+    resource = ResourceBootstrap(False)
+    file_path = os.path.join(str(resource.STATIC_DIR), resource.resources_css[0])
+    current_version = re.findall(r'Bootstrap v([\d\.]+)', getline(file_path, 2))[0]
     url = 'https://api.github.com/repos/twbs/bootstrap/releases'
     data = download(url)
     all_versions = [r['name'].lower()[1:] for r in data]
@@ -28,7 +33,8 @@ def test_bootstrap():
 
 
 def test_jquery():
-    current_version = ResourceJQuery.DIR.split('-')[-1]
+    file_path = os.path.splitext(os.path.basename(ResourceJQuery(False).resources_js[0]))[0]
+    current_version = re.findall(r'-([\d\.]+)', file_path)[0]
     url = 'https://api.github.com/repos/jquery/jquery/tags'
     data = download(url)
     all_versions = [r['name'].lower() for r in data]
@@ -38,7 +44,9 @@ def test_jquery():
 
 
 def test_font_awesome():
-    current_version = ResourceFontAwesome.DIR.split('-')[-1]
+    resource = ResourceFontAwesome(False)
+    file_path = os.path.join(str(resource.STATIC_DIR), resource.resources_css[0])
+    current_version = re.findall(r'Awesome ([\d\.]+)', getline(file_path, 2))[0]
     url = 'https://api.github.com/repos/FortAwesome/Font-Awesome/tags'
     data = download(url)
     all_versions = [r['name'].lower()[1:] for r in data]
