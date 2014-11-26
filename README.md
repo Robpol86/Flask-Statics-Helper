@@ -88,9 +88,9 @@ Use with Bootstrap3 (automatically enables jQuery):
 * [BootstrapValidator](http://bootstrapvalidator.com/) 0.5.3
 * [CSShake](https://github.com/elrumordelaluz/csshake) (cloned July 9, 2014)
 * [D3](http://d3js.org/) 3.4.13
-* [Data Tables](http://datatables.net/) 1.10.0
-* [Font Awesome](http://fortawesome.github.io/Font-Awesome/) 4.1.0
-* [WHHG Font](http://www.webhostinghub.com/glyphs/) (cloned July 9, 2014)
+* [Data Tables](http://datatables.net/) 1.10.4
+* [Font Awesome](http://fortawesome.github.io/Font-Awesome/) 4.2.0
+* [WHHG Font](http://www.webhostinghub.com/glyphs/) (cloned November 26, 2014)
 * [typeahead.js](https://github.com/twitter/typeahead.js) 0.10.5
 
 ## Configuration
