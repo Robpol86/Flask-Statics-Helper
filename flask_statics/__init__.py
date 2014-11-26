@@ -20,7 +20,7 @@ from flask_statics.helpers import get_resources, priority
 
 __author__ = '@Robpol86'
 __license__ = 'MIT'
-__version__ = '0.3.0'
+__version__ = '1.0.0'
 ABS_STATIC_ROOT = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'static')
 ALL_RESOURCES = get_resources(minify=False)
 ALL_VARIABLES = sorted(ALL_RESOURCES.keys(), key=priority)

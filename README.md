@@ -10,24 +10,21 @@ This extension also provides a base template to be extended by your Flask applic
 other Bootstrap3 extensions such as [this](https://github.com/mbr/flask-bootstrap) or
 [this](https://github.com/ryanolson/flask-bootstrap3)).
 
-[![Build Status](https://travis-ci.org/Robpol86/Flask-Statics-Helper.svg?branch=master)]
+* Python 2.6, 2.7, 3.3, and 3.4 supported on Linux and OS X.
+* Python 2.7, 3.3, and 3.4 supported on Windows (both 32 and 64 bit versions of Python).
+
+Tested on Windows XP and Windows 10 technical preview.
+
+[![Build Status Windows](https://img.shields.io/appveyor/ci/Robpol86/Flask-Statics-Helper.svg?style=flat-square)]
+(https://ci.appveyor.com/project/Robpol86/Flask-Statics-Helper)
+[![Build Status](https://img.shields.io/travis/Robpol86/Flask-Statics-Helper/master.svg?style=flat-square)]
 (https://travis-ci.org/Robpol86/Flask-Statics-Helper)
-[![Coverage Status](https://img.shields.io/coveralls/Robpol86/Flask-Statics-Helper.svg)]
-(https://coveralls.io/r/Robpol86/Flask-Statics-Helper)
-[![Latest Version](https://pypip.in/version/Flask-Statics-Helper/badge.png)]
+[![Coverage Status](https://img.shields.io/codecov/c/github/Robpol86/Flask-Statics-Helper/master.svg?style=flat-square)]
+(https://codecov.io/github/Robpol86/Flask-Statics-Helper)
+[![Latest Version](https://img.shields.io/pypi/v/Flask-Statics-Helper.svg?style=flat-square)]
 (https://pypi.python.org/pypi/Flask-Statics-Helper/)
-[![Downloads](https://pypip.in/download/Flask-Statics-Helper/badge.png)]
+[![Downloads](https://img.shields.io/pypi/dm/Flask-Statics-Helper.svg?style=flat-square)]
 (https://pypi.python.org/pypi/Flask-Statics-Helper/)
-[![Download format](https://pypip.in/format/Flask-Statics-Helper/badge.png)]
-(https://pypi.python.org/pypi/Flask-Statics-Helper/)
-[![License](https://pypip.in/license/Flask-Statics-Helper/badge.png)]
-(https://pypi.python.org/pypi/Flask-Statics-Helper/)
-
-## Supported Platforms
-
-* OSX and Linux.
-* Python 2.6, 2.7, 3.3, 3.4
-* [Flask](http://flask.pocoo.org/) 0.10.1
 
 ## Quickstart
 
